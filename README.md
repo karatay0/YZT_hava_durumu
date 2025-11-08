@@ -1,47 +1,53 @@
-# ☀️ Proje: Hava Durumu Veri Analizi Raporu
+# Rapor: Münih 2024 (Mart-Haziran) Yağış Analizi Bulguları
 
-**Proje Amacı:** Münih şehrine ait Mart-Haziran 2024 (kısmi) günlük hava durumu verilerini analiz ederek iklimsel trendleri, mevsimsel kalıpları ve aykırı hava olaylarını incelemek.
+**Amaç:** `munich.csv` veri seti kullanılarak Münih'in 2024 bahar/yaz başı dönemindeki yağış kalıplarının ve aykırı olayların tespiti.
 
-**Veri Seti:** `munich.csv` (20 Mart 2024 - 10 Haziran 2024 arası günlük yağış ve kar verisi)
-
----
-
-## 1. Ana Bulgular ve Özet
-
-Veri seti üzerinde yapılan keşifsel veri analizi (EDA) ve görselleştirme (Aşama 2 & 3) sonucunda aşağıdaki temel bulgulara ulaşılmıştır:
-
-1.  **Aykırı Hava Olayı (Sel Felaketi):** Veri setindeki en baskın ve önemli olay, **1 Haziran 2024** tarihinde kaydedilen **78.40 mm**'lik günlük yağış miktarıdır. Bu, incelenen periyottaki diğer tüm günlerden dramatik bir şekilde yüksektir ve o dönemde bölgede yaşanan sel ve aşırı yağış haberlerini teyit etmektedir.
-2.  **Kar Yağışı Gözlenmemiştir:** İncelenen dönem (20 Mart - 10 Haziran 2024) boyunca kayda değer (veya raporlanan) bir kar yağışı (`snowfall_sum`) gerçekleşmemiştir.
-3.  **Mevsimsel Yağış Kalıbı:** Veriler, ilkbahar aylarından (Mart/Nisan) yaz başına (Mayıs/Haziran) geçişte yağış miktarının belirgin şekilde arttığını göstermektedir.
-4.  **Yağış Dağılımı:** Yağışlı günlerin çoğunda (Bkz. Grafik 3: Histogram) 1-15 mm arasında hafif ila orta şiddette yağış görülmüştür. Ancak 1 Haziran'daki 78.40 mm ve 27 Mayıs'taki 35.10 mm gibi olaylar, ortalamayı yükselten ekstrem (aykırı) değerlerdir.
+**Analiz Edilen Dönem:** 20 Mart 2024 - 10 Haziran 2024
 
 ---
 
-## 2. Detaylı Analiz ve Görsel Yorumlama
+## Temel Bulgular
 
-### A. Günlük Yağış Analizi (Grafik 1: Zaman Serisi)
+Analiz sonucunda dört temel bulgu öne çıkmıştır:
 
-Aşama 3'te oluşturduğumuz günlük yağış grafiği (Line Plot), verinin büyük bölümünün düşük seviyelerde seyrettiğini, ancak Mayıs sonu ve özellikle Haziran başında çok keskin bir "sıçrama" (spike) gösterdiğini net bir şekilde ortaya koymuştur. Bu sıçrama, 1 Haziran'daki 78.40 mm'lik kayıttır.
+1.  **Tarihi Bir Yağış Zirvesi:** Veri seti, 1 Haziran 2024'te **78.40 mm** olarak kaydedilen olağanüstü yüksek bir günlük yağış olayını içermektedir. Bu, dönemin en belirgin ve aykırı olayıdır.
 
-### B. Aylık Toplam Yağış (Grafik 2: Çubuk Grafik)
+2.  **Mevsimsel Artış Eğilimi:** Veriler, ilkbahardan yaza geçişte yağış miktarında belirgin bir artış olduğunu göstermektedir.
 
-Aylık olarak grupladığımız (Aşama 2, `resample`) ve görselleştirdiğimiz (Aşama 3, Bar Plot) veriler, mevsimsel trendi doğrulamıştır:
+3.  **Aykırı Olaylara Dayalı Toplam:** Aylık toplam yağış miktarı, sürekli ve düşük yoğunluklu yağışlardan ziyade, Mayıs sonu ve Haziran başında yoğunlaşan birkaç günlük ekstrem yağış olayından ciddi şekilde etkilenmiştir.
 
-* **Mart 2024 (Kısmi):** Veri 20 Mart'tan başladığı için ayın en kurak dönemi olarak görünmektedir (diğer aylara kıyasla).
-* **Nisan 2024:** İlkbahar yağmurları görülmüş, ancak Mayıs ve Haziran'a göre daha sakin geçmiştir.
-* **Mayıs 2024:** Yağış miktarında artış başlamıştır. Özellikle ayın son haftası (27 Mayıs: 35.10 mm, 30 Mayıs: 22.90 mm, 31 Mayıs: 23.20 mm) yüksek yağışlı geçmiştir.
-* **Haziran 2024 (Kısmi):** İncelenen dönemin (sadece ilk 10 günü olmasına rağmen) **en yağışlı ayı** olmuştur. Bu durumun neredeyse tamamı, 1 Haziran'daki ekstrem yağıştan kaynaklanmaktadır.
-
-### C. Yağış Frekansı (Grafik 3: Histogram)
-
-Yağışlı günlerin dağılımını incelediğimiz histogram, veri setinin "sağa çarpık" (right-skewed) olduğunu göstermiştir. Bu, şu anlama gelir:
-* Münih'te yağmur yağan günlerin **büyük çoğluğunda** (frekansı yüksek olan sol çubuklar) **az miktarda** yağış (örn: 1-10 mm) kaydedilmiştir.
-* **Çok az sayıda günde** (frekansı düşük olan sağ çubuklar) **çok yüksek miktarda** yağış (örn: 35 mm veya 78 mm) görülmüştür. Bu da "aykırı hava olayı" tanımını desteklemektedir.
+4.  **Kar Yağışının Yokluğu:** İncelenen dönem boyunca kayda değer bir kar yağışı raporlanmamıştır.
 
 ---
 
-## 3. Sonuç ve Değerlendirme
+## Bulguların Görsel Detayları
 
-Bu proje, kısa bir zaman aralığındaki (yaklaşık 2.5 ay) günlük verilerin bile iklimsel kalıpları (ilkbahardan yaza artan yağış) ve daha da önemlisi aykırı hava olaylarını tespit etmek için ne kadar değerli olduğunu göstermiştir.
+### Bulgu 1: Ekstrem Yağış Olayı (1 Haziran)
 
-Pandas, Numpy ve Matplotlib kütüphaneleri kullanılarak yapılan bu analiz, Münih'te 2024 yazının başında yaşanan ve ciddi etkilere yol açan **1 Haziran 2024** tarihli **ekstrem yağış olayını** (78.40 mm) verisel olarak net bir şekilde tanımlamıştır. Analiz, bölgenin mevsimsel olarak yağışlı bir döneme girdiğini, ancak bu dönemin normal seyrin dışında, tek bir günde yoğunlaşan şiddetli bir yağış olayı ile karakterize edildiğini ortaya koymuştur.
+Aşağıdaki günlük yağış zaman serisi grafiği, dönemin büyük bölümünde yağışların 0-15 mm bandında seyrettiğini göstermektedir. Ancak, **1 Haziran**'da **78.40 mm**'ye ulaşan keskin zirve, bu olayın diğer tüm günlerden ne kadar farklı olduğunu net bir şekilde ortaya koymaktadır. Bu zirve, Mayıs ayının son haftasında başlayan (**27 Mayıs: 35.10 mm**, **30 Mayıs: 22.90 mm**) yoğun yağışlı bir periyodun ardından gelmiştir.
+
+**Görsel 1: Günlük Yağış Miktarı Zaman Serisi Grafiği**
+
+<img width="1099" height="435" alt="image" src="https://github.com/user-attachments/assets/34f2cace-44bd-4835-96d3-f592c4098aac" />
+
+
+---
+
+### Bulgu 2: Mevsimsel Eğilim ve Aylık Durum
+
+Aylık toplam yağış miktarını gösteren çubuk grafik, mevsimsel eğilimi doğrulamaktadır. Nisan ayına kıyasla Mayıs ayında toplam yağışta belirgin bir artış görülmektedir. 1 Haziran'daki tek bir günlük olay, Haziran ayının ilk 10 gününü, veri setindeki en yağışlı dönem (toplamda) yapmıştır.
+
+**Görsel 2: Aylık Toplam Yağış Çubuk Grafiği**
+
+<img width="1033" height="506" alt="image" src="https://github.com/user-attachments/assets/24bd4f49-bed2-4777-b9aa-287775e4a8fd" />
+
+
+---
+
+### Bulgu 3: Yağış Karakteristiği
+
+Yağışlı günlerin dağılımını gösteren histogram , yağışların karakteristiğini ortaya koymaktadır. Grafiğe göre, yağmur yağan günlerin büyük çoğunda miktar düşüktür (örn: 1-10 mm). 35 mm veya 78 mm gibi yüksek değerli yağışlar ise çok seyrektir.
+
+**Görsel 3: Yağış Miktarı Dağılımı Histogramı**
+
+<img width="828" height="516" alt="image" src="https://github.com/user-attachments/assets/0bf1d486-6939-4a00-a749-948efe92d015" />
